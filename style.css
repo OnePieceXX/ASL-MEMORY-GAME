@@ -1,0 +1,281 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: "Rubik Gemstones", system-ui;
+}
+:root{
+    --mainColor:#e0ffcd;
+    --fontColor:#2c2d34;
+    --boxColor:#27e1ce;
+    --blueColor:#8dc6ff;
+    --yellowColor:#efffb7;
+}
+::selection{
+    background-color: #8dc6ff;
+}
+.control-buttons{
+    background-color: #8dc6ff ;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+.star{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 70px;
+    line-height: 45px;
+    text-align: center;
+    transform: translate(-50% ,-50%);
+    padding: 15px 10px;
+    font-size: 40px;
+    color:azure;
+    background-color:#ff7e67;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.8s;
+}
+.star .o{
+    display: inline-block;
+    transition: 0.4s;
+}
+.star:hover{
+    background-color: #fdb44b;
+}
+.star:hover  .o{
+    animation-name:AlphabetMove;
+    animation-duration:0.7s;
+    animation-timing-function:linear;
+    animation-direction: alternate;
+}
+@keyframes AlphabetMove{
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-7px);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
+}
+.o2{
+    animation-delay: 0.1s;
+}
+.o3{
+    animation-delay: 0.2s;
+}
+.o4{
+    animation-delay: 0.3s;
+}
+.o5{
+    animation-delay: 0.4s;
+}
+.o6{
+    animation-delay: 0.5s;
+}
+.o7{
+    animation-delay: 0.6s;
+}
+.o8{
+    animation-delay: 0.7s;
+}
+.select{
+    background-color:rgb(255, 255, 255);
+    padding: 5px 2px;
+    font-family:"Rubik Gemstones", system-ui;
+    border-radius: 5px;
+    font-size: 20px;
+    border: 2px black solid;
+    position: relative;
+    left: 40%;
+    top: 58%;
+}
+.h:hover{
+    background-color: #fac06f;
+}
+.Win,.lose{
+    height: 390px;
+    width: 330px;
+    background-color: var(--blueColor);
+    border-radius: 5px;
+    padding: 20px 10px;
+    border: 2px #ffffff solid;
+    display:none;
+    position: relative;
+    z-index: 7;
+    left: 50%;
+    transform: translate(-50%,30%);
+    opacity: 0;
+    transition: all 1s linear;
+}
+
+.Win .d1 ,.lose .d1{
+    font-size: 40px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+.white{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 86%;
+    padding:20px 10px;
+    border-radius: 6px;
+    font-family: "Concert One", sans-serif;
+}
+.lose .white{
+    height: 70%;
+}
+.Win .d2,.Win .d3,.lose .d2{
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.Win .btn-Again, .lose .btn-Again{
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 20px;
+    background-color: var(--blueColor);
+    color:azure;
+    border: 2px azure solid;
+    border-radius: 7px;
+    position: relative;
+    left: 50%;
+    margin-top: 10px;
+    outline: 2px var(--blueColor) solid;
+    transform: translate(-50%);
+    transition: all 0.5s ;
+}
+.Win .btn-Again:hover{
+    background-color:#fdb44b ;
+    outline-color: #fdb44b;
+}
+.lose .btn-Again:hover{
+    background-color:#fdb44b ;
+    outline-color: #fdb44b;
+}
+.info-container{
+    width: 812px;
+    display: flex;
+    position: relative;
+    left: 50%;
+    height: 50px;
+    margin-left: -406px;
+    border: 4px var(--blueColor) solid;
+    padding: 10px 12px;
+    font-size: 18px;
+    align-items: center;
+    background-color: azure;
+    justify-content: space-between;
+}
+.memory-game-blocks{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    align-items: center;
+    width: 820px;
+    justify-content: space-between;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+.game-block{
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: all 1s;
+    width: 157px;
+    height: 155px;
+    margin-bottom: 8px;
+}
+.game-block .face{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-family: "Passero One", sans-serif;
+    font-size: 130px;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 140px;
+    font-weight: bolder;
+
+}
+.game-block .front{
+    background-color:var(--blueColor);
+    color: azure;
+    border: 5px #fdb44b solid;
+}
+.game-block .back{
+    background-color: #fac06f;
+    backface-visibility: hidden;
+    color: rgb(255, 255, 255);
+    transform: rotateY(180deg);
+}
+.game-block .a{
+    border: 5px black solid;
+}
+.flipped{
+    transform: rotateY(180deg);
+    transition: all 0.4s;
+}
+.matched{
+    transform: rotateY(180deg);
+    pointer-events: none;
+    visibility: hidden;
+}
+.memory-game-blocks.no-cliking{
+    pointer-events: none;
+}
+.timer{
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.danger{
+ color: red;
+ line-height: 40px;
+ animation-name: danger;
+ animation-duration: 1s;
+ animation-timing-function: linear;
+ animation-direction: alternate;
+ animation-iteration-count: infinite;
+}
+@keyframes danger{
+    0%{
+      font-size: 18px;
+    }
+    50%{
+        font-size: 25px;    
+    }
+    100%{
+        font-size: 18px;
+    }
+}
+.timer2{
+    width: 60px;
+    height: 60px;
+    display: flex;
+}
+.sond{
+    position: absolute;
+    left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+}
+.bi-volume-up,.bi-volume-mute,.bi-music-note,.bi-music-note-list{
+    margin-left: 10px;
+}
+.sond .bi-volume-mute ,.sond .bi-music-note{
+    display: none;
+}
